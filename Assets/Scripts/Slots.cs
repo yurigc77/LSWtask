@@ -30,9 +30,11 @@ public class Slots : MonoBehaviour,IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if(!item)
+        if (!item)
         {
+
             DragItem.ItemBeginDragged.GetComponent<DragItem>().SetParent(transform,this);
+         
         }
     }
 }

@@ -21,6 +21,7 @@ public class DragItem : MonoBehaviour,IBeginDragHandler, IEndDragHandler,IDragHa
         ItemBeginDragged = gameObject;
         startPos = transform.position;
         startParent = transform.parent;
+        Debug.Log(GetComponent<CanvasGroup>().ToString());
         
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
@@ -48,19 +49,24 @@ public class DragItem : MonoBehaviour,IBeginDragHandler, IEndDragHandler,IDragHa
         }
         else if(slot.SlotType.ToString()=="inventory")
         {
-  
             transform.SetParent(slotTransform);
-      
+            if(item.origin=="shop")
+            {
+                item.origin = "inventory";
+                GameController.instance.LooseMoney(item);
+            }
       
         }
         else if(slot.SlotType.ToString()=="shop")
         {
             transform.SetParent(slotTransform);
-       
-           
+            if(item.origin!="shop")
+            {
                 GameController.instance.GetMoney(item);
-           
-            
+                item.origin = "shop";
+            }
+
+               
         }
     }
 }

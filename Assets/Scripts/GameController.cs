@@ -44,9 +44,9 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetInt("money", Money);
     }
 
-    public void LooseMoney()
+    public void LooseMoney(Item item)
     {
-        Money--;
+        Money=Money-item.price;
 
         MoneyText.text = "x " + Money.ToString();
 

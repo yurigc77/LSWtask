@@ -16,6 +16,22 @@ public class Player : MonoBehaviour
     private bool IsInventory=false;
 
 
+    private static Player instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     void Start()
     {
         rig=GetComponent<Rigidbody2D>();

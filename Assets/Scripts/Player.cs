@@ -8,11 +8,12 @@ public class Player : MonoBehaviour
     public SpriteRenderer sprite;
 
 
-    public int money;
+    //public int money;
     public float speed;
     public GameObject interactionIcon;
-    public GameObject ShopMenu;
+    public GameObject inventory;
     private bool canInteract;
+    private bool IsInventory=false;
 
 
     void Start()
@@ -27,6 +28,9 @@ public class Player : MonoBehaviour
         {
             Interact();
         }
+
+       OpenInventory();
+
     }
 
 
@@ -57,8 +61,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Submit"))
         {
-            ShopMenu.SetActive(true);
-            Time.timeScale = 0;
+            GameController.instance.OpenDialog();
         }
     }
 
@@ -81,6 +84,23 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void OpenInventory()
+    {
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            if (IsInventory)
+            {
+                inventory.SetActive(false);
+                IsInventory = false;
+            }
+            else
+            {
+                inventory.SetActive(true);
+                IsInventory = true;
+            }
+        }
+  
+    }
 
 
 }

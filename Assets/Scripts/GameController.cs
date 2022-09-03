@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
     public int Money;
-    public Text MoneyText;
+    public TextMeshProUGUI MoneyText;
+    public GameObject BuyMenu;
+    public GameObject SellMenu;
+    public GameObject Dialog;
 
     private void Awake()
     {
@@ -26,11 +30,9 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (PlayerPrefs.GetInt("money") > 0)
-        {
-            Money = PlayerPrefs.GetInt("money");
+
             MoneyText.text = "x " + Money.ToString();
-        }
+        
     }
 
     public void GetMoney()
@@ -51,5 +53,30 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetInt("money", Money);
     }
 
+
+
+    public void OpenBuyMenu()
+    {
+        CloseMenus();
+        BuyMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void CloseMenus()
+    {
+        BuyMenu.SetActive(false);
+        SellMenu.SetActive(false);
+        Dialog.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+
+    public void OpenDialog()
+    {
+        Dialog.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+  
 }
 

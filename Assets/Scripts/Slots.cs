@@ -8,6 +8,7 @@ public class Slots : MonoBehaviour,IDropHandler
     [System.Serializable]
     public enum SlotsType
     {
+        shop,
         inventory,
         Hat,
         Glasses,

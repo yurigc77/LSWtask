@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour
     public int Money;
     public TextMeshProUGUI MoneyText;
     public GameObject BuyMenu;
-    public GameObject SellMenu;
     public GameObject Dialog;
+    public GameObject inventory;
 
     private void Awake()
     {
@@ -35,9 +35,9 @@ public class GameController : MonoBehaviour
         
     }
 
-    public void GetMoney()
+    public void GetMoney(Item item)
     {
-        Money++;
+        Money=Money+(item.price/2);
 
         MoneyText.text = "x " + Money.ToString();
 
@@ -59,14 +59,15 @@ public class GameController : MonoBehaviour
     {
         CloseMenus();
         BuyMenu.SetActive(true);
+        inventory.SetActive(true);
         Time.timeScale = 0;
     }
 
     public void CloseMenus()
     {
         BuyMenu.SetActive(false);
-        SellMenu.SetActive(false);
         Dialog.SetActive(false);
+        inventory.SetActive(false);
         Time.timeScale = 1;
     }
 

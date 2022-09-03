@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [CreateAssetMenu(fileName ="new item",menuName ="Inventory/Item")]
 public class Item : ScriptableObject
 {
     public Sprite icon;
     public string title;
+    public int price;
 
     [System.Serializable]   
     public enum Type
@@ -17,4 +19,8 @@ public class Item : ScriptableObject
     }
 
     public Type ItemType;
+
+
+
+
 }

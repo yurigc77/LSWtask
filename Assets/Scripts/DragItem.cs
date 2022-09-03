@@ -10,6 +10,7 @@ public class DragItem : MonoBehaviour,IBeginDragHandler, IEndDragHandler,IDragHa
     Vector3 startPos;
     Transform startParent;
     public Item item;
+    public Slots.SlotsType slotype;
     void Start()
     {
         GetComponent<Image>().sprite = item.icon;
@@ -18,8 +19,9 @@ public class DragItem : MonoBehaviour,IBeginDragHandler, IEndDragHandler,IDragHa
    public void OnBeginDrag(PointerEventData eventData)
     {
         ItemBeginDragged = gameObject;
-        startPos = transform.position; 
+        startPos = transform.position;
         startParent = transform.parent;
+        
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
@@ -40,15 +42,25 @@ public class DragItem : MonoBehaviour,IBeginDragHandler, IEndDragHandler,IDragHa
     
     public void SetParent(Transform slotTransform, Slots slot)
     {
-
-       
-        if (item.ItemType.ToString()==slot.SlotType.ToString()|| item.ItemType.ToString() == "inventory")
+        if (item.ItemType.ToString()==slot.SlotType.ToString())
         {
             transform.SetParent(slotTransform);
         }
-        else 
+        else if(slot.SlotType.ToString()=="inventory")
+        {
+  
+            transform.SetParent(slotTransform);
+      
+      
+        }
+        else if(slot.SlotType.ToString()=="shop")
         {
             transform.SetParent(slotTransform);
+       
+           
+                GameController.instance.GetMoney(item);
+           
+            
         }
     }
 }

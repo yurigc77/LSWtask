@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: e37a4be9ec69bf341b53db980723ae05, type: 3}
   title: TopHat
+  price: 50
+  priceText: {fileID: 0}
   ItemType: 0

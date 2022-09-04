@@ -11,6 +11,8 @@ public class DragItem : MonoBehaviour,IBeginDragHandler, IEndDragHandler,IDragHa
     Transform startParent;
     public Item item;
     public Slots.SlotsType slotype;
+    [SerializeField]
+    private ClothesSocket clothesSocket;
     void Start()
     {
         GetComponent<Image>().sprite = item.icon;
@@ -43,30 +45,63 @@ public class DragItem : MonoBehaviour,IBeginDragHandler, IEndDragHandler,IDragHa
     
     public void SetParent(Transform slotTransform, Slots slot)
     {
-        if (item.ItemType.ToString()==slot.SlotType.ToString())
+        if (item.ItemType.ToString()==slot.SlotType.ToString())//if gonna equip item
         {
-            transform.SetParent(slotTransform);
-        }
-        else if(slot.SlotType.ToString()=="inventory")
-        {
-            transform.SetParent(slotTransform);
-            if(item.origin=="shop")
+            if (item.origin == "shop" && GameController.instance.Money>=item.price)//if item came from shop I need to pay
             {
-                item.origin = "inventory";
                 GameController.instance.LooseMoney(item);
+                transform.SetParent(slotTransform);
+                item.origin = "equip";
             }
-      
-        }
-        else if(slot.SlotType.ToString()=="shop")
-        {
-            transform.SetParent(slotTransform);
-            if(item.origin!="shop")
+            else if(item.origin !="shop" )
             {
-                GameController.instance.GetMoney(item);
-                item.origin = "shop";
+                transform.SetParent(slotTransform);
+                item.origin = "equip";
             }
 
-               
+            if (clothesSocket != null && item.AnimationClips != null)
+            {
+                clothesSocket.Equip(item.AnimationClips);
+            }
+            
+        }
+        else if(slot.SlotType.ToString()=="inventory")//if gonna storage item
+        {
+            if (item.origin == "shop" && GameController.instance.Money >= item.price)//if item came from shop I need to pay
+            {
+                GameController.instance.LooseMoney(item);
+                transform.SetParent(slotTransform);
+                item.origin = "inventory";
+            }
+            else if (item.origin == "equip")
+            {
+                if (clothesSocket != null && item.AnimationClips != null)
+                {
+                    clothesSocket.Dequip();
+                }
+            }
+                transform.SetParent(slotTransform);
+                item.origin = "inventory";
+      
+        }
+        else if(slot.SlotType.ToString()=="shop")//if gonna shop item
+        {
+            if(item.origin=="inventory")//if item did not came from shop I need to recive
+            {
+                GameController.instance.GetMoney(item);
+            }
+            else if(item.origin == "equip" )
+            {
+                GameController.instance.GetMoney(item);
+                if (clothesSocket != null && item.AnimationClips != null)
+                {
+                    clothesSocket.Dequip();
+                }
+            }
+            
+            transform.SetParent(slotTransform);
+            item.origin = "shop";
+   
         }
     }
 }

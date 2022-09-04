@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a23cbd415986492418d8ff3dc13d8439, type: 3}
-  m_Name: TopHat
+  m_Name: redTshirt
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: e37a4be9ec69bf341b53db980723ae05, type: 3}
-  title: TopHat
-  price: 50
-  origin: inventory
+  icon: {fileID: 21300000, guid: c612d76442f66dd459f66e6b293ef735, type: 3}
+  title: refTshirt
+  price: 30
+  origin: equip
   animationClips:
-  - {fileID: 7400000, guid: 8784d7dbf4c43f94eb4c1c277b748391, type: 2}
-  - {fileID: 7400000, guid: d5a47a4084b72e34398439bfddf1f006, type: 2}
-  ItemType: 0
+  - {fileID: 7400000, guid: 979da651f0738454a9414cb35444d7a7, type: 2}
+  - {fileID: 7400000, guid: 05e2620d003de994a8550f39d5e1c09f, type: 2}
+  ItemType: 2

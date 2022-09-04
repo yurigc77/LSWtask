@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a23cbd415986492418d8ff3dc13d8439, type: 3}
-  m_Name: TopHat
+  m_Name: cap
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: e37a4be9ec69bf341b53db980723ae05, type: 3}
-  title: TopHat
+  icon: {fileID: 21300000, guid: e77376a482a580048b10c8393e5441c1, type: 3}
+  title: RedCap
   price: 50
-  origin: inventory
+  origin: shop
   animationClips:
-  - {fileID: 7400000, guid: 8784d7dbf4c43f94eb4c1c277b748391, type: 2}
-  - {fileID: 7400000, guid: d5a47a4084b72e34398439bfddf1f006, type: 2}
+  - {fileID: 7400000, guid: 8372f05e80ebadc41be7043f9dafcfc9, type: 2}
+  - {fileID: 7400000, guid: e25154b02bbd2144685ac1d1b1fc2225, type: 2}
   ItemType: 0

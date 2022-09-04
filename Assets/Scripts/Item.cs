@@ -11,6 +11,9 @@ public class Item : ScriptableObject
     public int price;
     public string origin="shop";
 
+    [SerializeField]
+    private AnimationClip[] animationClips;
+
     [System.Serializable]   
     public enum Type
     {
@@ -21,7 +24,5 @@ public class Item : ScriptableObject
 
     public Type ItemType;
 
-
-
-
+    public AnimationClip[] AnimationClips { get => animationClips; }
 }

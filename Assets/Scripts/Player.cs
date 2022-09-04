@@ -6,15 +6,19 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rig;
     public SpriteRenderer sprite;
+    public Animator anim;
 
 
-    //public int money;
+   
     public float speed;
     public GameObject interactionIcon;
     public GameObject inventory;
     private bool canInteract;
     private bool IsInventory=false;
+    private bool IsMoving;
 
+    [SerializeField]
+    public ClothesSocket[] clothesSocket;
 
     private static Player instance;
     private void Awake()
@@ -60,17 +64,43 @@ public class Player : MonoBehaviour
         float HorizontalMovement = Input.GetAxis("Horizontal");
         float VerticalMovement = Input.GetAxis("Vertical");
 
-        if (HorizontalMovement > 0)
+        if(HorizontalMovement > 0)
         {
-            sprite.flipX = false;
+            anim.SetInteger("Transition", 2);//right
+        }
+        else if (HorizontalMovement > 0 && VerticalMovement!=0)
+        {
+            anim.SetInteger("Transition", 2);//right
+           
         }
         else if (HorizontalMovement < 0)
         {
-            sprite.flipX = true;
+            anim.SetInteger("Transition", 1);//left
+
+        }
+        else if(HorizontalMovement < 0 && VerticalMovement != 0)
+        {
+            anim.SetInteger("Transition", 1);//left
+        }
+        else if(VerticalMovement != 0)
+        {
+            anim.SetInteger("Transition", 2);//right
+        }
+        else
+        {
+            anim.SetInteger("Transition", 0);//idle
         }
 
         rig.velocity = new Vector2(VerticalMovement * speed, rig.velocity.y);
         rig.velocity = new Vector2(HorizontalMovement * speed, rig.velocity.x);
+        /*
+        if(anim.GetInteger("Transition")==1)
+        {
+            foreach(ClothesSocket item in clothesSocket)
+            {
+                item.GetComponent<SpriteRenderer>().flipX = true;
+            }
+        }*/
     }
 
     void Interact()

@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e37a4be9ec69bf341b53db980723ae05, type: 3}
   title: TopHat
   price: 50
-  origin: inventory
+  origin: equip
   animationClips:
   - {fileID: 7400000, guid: 8784d7dbf4c43f94eb4c1c277b748391, type: 2}
   - {fileID: 7400000, guid: d5a47a4084b72e34398439bfddf1f006, type: 2}

@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: c612d76442f66dd459f66e6b293ef735, type: 3}
   title: refTshirt
   price: 30
-  origin: equip
+  origin: shop
   animationClips:
   - {fileID: 7400000, guid: 979da651f0738454a9414cb35444d7a7, type: 2}
   - {fileID: 7400000, guid: 05e2620d003de994a8550f39d5e1c09f, type: 2}

@@ -52,17 +52,22 @@ public class DragItem : MonoBehaviour,IBeginDragHandler, IEndDragHandler,IDragHa
                 GameController.instance.LooseMoney(item);
                 transform.SetParent(slotTransform);
                 item.origin = "equip";
+                if (clothesSocket != null && item.AnimationClips != null)
+                {
+                    clothesSocket.Equip(item.AnimationClips);
+                }
             }
             else if(item.origin !="shop" )
             {
                 transform.SetParent(slotTransform);
                 item.origin = "equip";
+                if (clothesSocket != null && item.AnimationClips != null)
+                {
+                    clothesSocket.Equip(item.AnimationClips);
+                }
             }
 
-            if (clothesSocket != null && item.AnimationClips != null)
-            {
-                clothesSocket.Equip(item.AnimationClips);
-            }
+          
             
         }
         else if(slot.SlotType.ToString()=="inventory")//if gonna storage item
@@ -79,9 +84,14 @@ public class DragItem : MonoBehaviour,IBeginDragHandler, IEndDragHandler,IDragHa
                 {
                     clothesSocket.Dequip();
                 }
-            }
                 transform.SetParent(slotTransform);
                 item.origin = "inventory";
+            }
+            else if(item.origin=="inventory")
+            {
+                transform.SetParent(slotTransform);
+            }
+                
       
         }
         else if(slot.SlotType.ToString()=="shop")//if gonna shop item
@@ -104,4 +114,6 @@ public class DragItem : MonoBehaviour,IBeginDragHandler, IEndDragHandler,IDragHa
    
         }
     }
-}
+
+   
+    }

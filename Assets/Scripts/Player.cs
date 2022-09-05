@@ -67,28 +67,45 @@ public class Player : MonoBehaviour
         if(HorizontalMovement > 0)
         {
             anim.SetInteger("Transition", 2);//right
+            clothesSocket[0].GetComponent<SpriteRenderer>().flipX = false;
+            clothesSocket[1].GetComponent<SpriteRenderer>().flipX = false;
+            clothesSocket[2].GetComponent<SpriteRenderer>().flipX = false;
+
         }
         else if (HorizontalMovement > 0 && VerticalMovement!=0)
         {
             anim.SetInteger("Transition", 2);//right
-           
+            clothesSocket[0].GetComponent<SpriteRenderer>().flipX = false;
+            clothesSocket[1].GetComponent<SpriteRenderer>().flipX = false;
+            clothesSocket[2].GetComponent<SpriteRenderer>().flipX = false;
         }
         else if (HorizontalMovement < 0)
         {
             anim.SetInteger("Transition", 1);//left
-
+            clothesSocket[0].GetComponent<SpriteRenderer>().flipX = true;
+            clothesSocket[1].GetComponent<SpriteRenderer>().flipX = true;
+            clothesSocket[2].GetComponent<SpriteRenderer>().flipX = true;
         }
         else if(HorizontalMovement < 0 && VerticalMovement != 0)
         {
             anim.SetInteger("Transition", 1);//left
+            clothesSocket[0].GetComponent<SpriteRenderer>().flipX = true;
+            clothesSocket[1].GetComponent<SpriteRenderer>().flipX = true;
+            clothesSocket[2].GetComponent<SpriteRenderer>().flipX = true;
         }
         else if(VerticalMovement != 0)
         {
             anim.SetInteger("Transition", 2);//right
+            clothesSocket[0].GetComponent<SpriteRenderer>().flipX = false;
+            clothesSocket[1].GetComponent<SpriteRenderer>().flipX = false;
+            clothesSocket[2].GetComponent<SpriteRenderer>().flipX = false;
         }
         else
         {
             anim.SetInteger("Transition", 0);//idle
+            clothesSocket[0].GetComponent<SpriteRenderer>().flipX = false;
+            clothesSocket[1].GetComponent<SpriteRenderer>().flipX = false;
+            clothesSocket[2].GetComponent<SpriteRenderer>().flipX = false;
         }
 
         rig.velocity = new Vector2(VerticalMovement * speed, rig.velocity.y);

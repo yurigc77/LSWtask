@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: c1ac78695e821f84882cac8dd735dace, type: 3}
   title: sunGlasses
   price: 20
-  origin: inventory
+  origin: equip
   animationClips:
   - {fileID: 7400000, guid: 5bc60d4a189a05a4f8c9c5f78de90438, type: 2}
   - {fileID: 7400000, guid: 12415e953ce3ce74e83bfc3824c41425, type: 2}

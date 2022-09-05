@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 8d740a9cbf2e0704895259209f537d9a, type: 3}
   title: greenTshirt
   price: 30
-  origin: inventory
+  origin: shop
   animationClips:
   - {fileID: 7400000, guid: 717a8c7dee1c6ff449f2204875c2f98e, type: 2}
   - {fileID: 7400000, guid: aa49be69fa640844b86f95674d707831, type: 2}

@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 1959a227a343a4c4aa78f0d538447f7d, type: 3}
   title: glasses
   price: 20
-  origin: inventory
+  origin: shop
   animationClips:
   - {fileID: 7400000, guid: 5f9fcdb24a8c26844bd9f3fb330bde03, type: 2}
   - {fileID: 7400000, guid: 161d13d534dc1e243bb150594459d525, type: 2}
